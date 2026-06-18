@@ -4,6 +4,7 @@ type ComboVariant = {
   label: string;
   payoff: string;
   recording: string;
+  videoUrl?: string;
 };
 
 type ComboPlan = {
@@ -18,6 +19,7 @@ type MixupBranch = {
   label: string;
   description: string;
   recording: string;
+  videoUrl?: string;
   branches?: MixupBranch[];
 };
 
@@ -32,6 +34,7 @@ type OkiPlan = {
   soloOption: string;
   assistOption: string;
   recording: string;
+  videoUrl?: string;
 };
 
 type NeutralPlan = {
@@ -39,6 +42,7 @@ type NeutralPlan = {
   summary: string;
   bullets: string[];
   recording: string;
+  videoUrl?: string;
 };
 
 export type TeamGuide = {
@@ -59,6 +63,198 @@ export type TeamGuide = {
 };
 
 const featuredGuides: TeamGuide[] = [
+  {
+    id: "sample-complete-guide",
+    title: "Sample / Complete Guide",
+    category: "community",
+    author: "Demo builder",
+    summary:
+      "A fully filled-out reference guide with complete combos, a branching mixup tree, okizeme notes, and neutral plans.",
+    team: ["Sample", "Complete"],
+    published: "Demo draft",
+    recordings: 12,
+    concepts: {
+      combos: [
+        {
+          starter: "5L starter",
+          route: "5L > 5M > launch > assist > ender",
+          focus: "Best for quick confirms",
+          notes: [
+            "Use this when you want a clean baseline route.",
+            "Good entry point for players learning the team.",
+          ],
+          variants: [
+            {
+              label: "Assistless",
+              payoff: "Fast, stable knockdown route",
+              recording: "5L > 5M > launch > ender A",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            },
+            {
+              label: "With assist",
+              payoff: "Spend assist to extend and carry farther",
+              recording: "5L > 5M > assist call > launch > ender B",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            },
+            {
+              label: "1 meter cashout",
+              payoff: "Use meter to convert into a finish",
+              recording: "5L > 5M > assist > super ender",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            },
+          ],
+        },
+        {
+          starter: "Counter hit 5H",
+          route: "5H CH > wall bounce > assist confirm",
+          focus: "Damage",
+          notes: [
+            "Only use when you have a strong read.",
+            "This route is meant to end rounds.",
+          ],
+          variants: [
+            {
+              label: "Meterless",
+              payoff: "Stable wall bounce confirm",
+              recording: "CH 5H > wall bounce > ender",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            },
+            {
+              label: "Assist route",
+              payoff: "Use assist to stabilize the bounce and add damage",
+              recording: "CH 5H > assist call > wall bounce > ender",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            },
+          ],
+        },
+      ],
+      mixups: {
+        opening: "Opponent blocks 5L",
+        setup: "5L -> 5M -> assist call -> branch into high or low.",
+        tree: {
+          label: "5L",
+          description:
+            "Start the string here and decide when the route should branch.",
+          recording: "5L starter recording",
+          videoUrl:
+            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          branches: [
+            {
+              label: "5M",
+              description: "Keep the string moving into the mid button.",
+              recording: "5L > 5M recording",
+              videoUrl:
+                "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+              branches: [
+                {
+                  label: "assist call",
+                  description:
+                    "This is the actual mixup point where the tree splits.",
+                  recording: "5L > 5M > assist call recording",
+                  videoUrl:
+                    "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                  branches: [
+                    {
+                      label: "high",
+                      description: "Immediate overhead branch.",
+                      recording: "assist call > high recording",
+                      videoUrl:
+                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                      branches: [
+                        {
+                          label: "post-high reset",
+                          description:
+                            "After they block high, reset pressure or cash out.",
+                          recording: "high > reset recording",
+                          videoUrl:
+                            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                        },
+                      ],
+                    },
+                    {
+                      label: "low",
+                      description: "Fast low branch after the assist lands.",
+                      recording: "assist call > low recording",
+                      videoUrl:
+                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                      branches: [
+                        {
+                          label: "post-low confirm",
+                          description:
+                            "Convert into damage if the low connects.",
+                          recording: "low > confirm recording",
+                          videoUrl:
+                            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                        },
+                      ],
+                    },
+                    {
+                      label: "throw",
+                      description:
+                        "Walk forward and take the throw if they keep blocking.",
+                      recording: "assist call > throw recording",
+                      videoUrl:
+                        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      },
+      okizeme: [
+        {
+          hitState: "Midscreen hard knockdown",
+          soloOption: "Dash up meaty and cover throw with a plus button.",
+          assistOption:
+            "Call assist to create a left-right while holding space.",
+          recording: "Midscreen oki recording",
+          videoUrl:
+            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+        {
+          hitState: "Corner sweep knockdown",
+          soloOption: "Short hop safe jump into stagger pressure.",
+          assistOption: "Assist-backed left-right with a late throw threat.",
+          recording: "Corner oki recording",
+          videoUrl:
+            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+      ],
+      neutral: [
+        {
+          title: "Midrange control",
+          summary:
+            "Take space with safe buttons and use the assist to cover your entry.",
+          bullets: [
+            "Whiff punish first, then spend meter only if it kills or sets up oki.",
+            "Keep your movement simple so the assist timing stays consistent.",
+          ],
+          recording: "Midrange control recording",
+          videoUrl:
+            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+        {
+          title: "Assist-backed approach",
+          summary:
+            "Use the assist to create a lane, then choose whether to stay grounded or jump in.",
+          bullets: [
+            "Pre-plan the response you want from the opponent.",
+            "Do not call assist if you cannot convert the hit into a real route.",
+          ],
+          recording: "Assist-backed approach recording",
+          videoUrl:
+            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+      ],
+    },
+  },
   {
     id: "ahri-yasuo",
     title: "Ahri / Yasuo Guide",
